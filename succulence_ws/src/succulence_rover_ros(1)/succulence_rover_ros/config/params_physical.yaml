@@ -190,7 +190,7 @@ slam_node:
       # Seconds between OccupancyGrid publishes from SLAM.
       # Larger: less RViz/CPU load, laggier map.
       # Smaller: snappier map, more bandwidth and rendering cost.
-      map_publish_interval: 2.0
+      map_publish_interval: 1.0
 
       # Floor on the diagonal of scan-match edge covariances. Prevents one
       # over-confident match from dominating the optimiser.
@@ -290,7 +290,7 @@ planner_node:
       # Larger: stable plans, slower reaction to newly mapped obstacles.
       # Smaller: reacts faster but the path can visibly jitter as the
       #   map fills in.
-      replan_period: 5.0
+      replan_period: 1.0
 
       # Cell value (0..100) at or above which a cell is treated as an
       # obstacle by A*.
@@ -315,14 +315,14 @@ planner_node:
       # Larger: paths stay further from obstacles; narrow gaps may
       #   inflate shut and become "no path".
       # Smaller: paths hug walls; rover may scrape corners.
-      inflation_radius_cells: 5.0
+      inflation_radius_cells: 4.0
 
     # Hardcoded mission goal (Kevin's location), in the map frame.
     # Increase x: goal moves east. Decrease x: goal moves west.
     # Increase y: goal moves north. Decrease y: goal moves south.
     goal:
-      x: 0.5
-      y: 2.0
+      x: 0.25
+      y: 2.35
 
 
 # ====================================================================
@@ -346,7 +346,7 @@ navigator_node:
       # arc to it.
       # Larger: gentle, sweeping turns; cuts corners.
       # Smaller: aggressive, tight tracking of the path; can oscillate.
-      lookahead: 0.25
+      lookahead: 0.42
 
       # Maximum forward speed in m/s.
       # Larger: faster mission completion but stresses scan matching and
@@ -364,7 +364,7 @@ navigator_node:
       # and stops.
       # Larger: stops further from the exact goal; more forgiving.
       # Smaller: stops closer; may overshoot or miss in noisy odometry.
-      goal_tolerance: 0.05
+      goal_tolerance: 0.07
 
       # Seconds without a fresh plan before the navigator stops the rover
       # as a safety fallback. Must comfortably exceed `replan_period`.
